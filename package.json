@@ -1,0 +1,46 @@
+{
+  "name": "Tube Puzzle Game",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "tsc": "tsc",
+    "build": "cross-env NODE_ENV=production webpack --mode production --config webpack/webpack.config.js",
+    "start": "cross-env NODE_ENV=development webpack serve --mode development --config webpack/webpack.config.js"
+  },
+  "dependencies": {
+    "@babel/core": "^7.18.10",
+    "@babel/preset-env": "^7.18.10",
+    "@pixi/filter-glow": "^5.2.1",
+    "@pixi/gif": "^2.1.0",
+    "@pixi/math-extras": "^7.3.2",
+    "@pixi/particle-emitter": "^5.0.8",
+    "@pixi/sound": "^5.2.1",
+    "@pixi/ui": "^0.6.2",
+    "babel-loader": "^8.2.5",
+    "base64-inline-loader": "^2.0.1",
+    "clean-webpack-plugin": "^4.0.0",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "folder-hash": "^4.0.1",
+    "fontfaceobserver": "^2.3.0",
+    "free-tex-packer-core": "^0.3.4",
+    "html-webpack-plugin": "^5.5.0",
+    "jszip": "^3.10.1",
+    "node-json-db": "^1.4.1",
+    "pixi.js": "^7.2.0",
+    "poly-decomp": "^0.3.0",
+    "pug": "^3.0.2",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.1",
+    "tweedle.js": "^2.0.1",
+    "typescript": "^5.4.5",
+    "webpack": "^5.74.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-dev-server": "^4.10.0"
+  },
+  "devDependencies": {
+    "parcel": "^2.2.1",
+    "url-loader": "^4.1.1",
+    "webpack-cli": "^4.10.0"
+  }
+}
