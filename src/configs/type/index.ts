@@ -1,1 +1,1 @@
-export type UriLinks = { [key: string]: any };
+export type IUriLinks = { [key: string]: any };

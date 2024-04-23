@@ -7,7 +7,7 @@ export default class LoadingScene extends Container {
         super();
     }
 
-    public async create(): Promise<void> {
+    public async init(): Promise<void> {
         await load();
         document.getElementById("loader_screen")?.remove();
     }

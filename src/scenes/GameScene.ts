@@ -1,9 +1,15 @@
-import { Container } from "pixi.js";
+import BaseScene from "./core/BaseScene";
 
-export default class GameScene extends Container {
+import Menu from "../levels/Menu";
+import Level1 from "../levels/Level1";
+import Result from "../levels/Result";
+
+export default class GameScene extends BaseScene {
     constructor() {
-        super();
+        super([
+            new Menu(),
+            new Level1(),
+            new Result(),
+        ]);
     }
-
-    public create(): void {}
 }

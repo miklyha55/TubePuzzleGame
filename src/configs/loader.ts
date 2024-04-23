@@ -3,11 +3,11 @@ import { sound } from "@pixi/sound";
 
 import { fontAssets, soundAssets, textureAssets, jsonsAssets } from "./index";
 
-import { UriLinks } from "./type";
+import { IUriLinks } from "./type";
 
-export const fonts: UriLinks = {};
-export const textures: UriLinks = {};
-export const jsons: UriLinks = {};
+export const fonts: IUriLinks = {};
+export const textures: IUriLinks = {};
+export const jsons: IUriLinks = {};
 
 export function load() {
     return new Promise<void>(async (resolve) => {
@@ -37,7 +37,7 @@ export function load() {
         return resolve();
     });
 
-    async function loadTreeTextures(writenObject: UriLinks, readenObject: UriLinks, key: string): Promise<void> {
+    async function loadTreeTextures(writenObject: IUriLinks, readenObject: IUriLinks, key: string): Promise<void> {
         writenObject[key] = {};
 
         for (const key2 in readenObject[key]) {

@@ -2,10 +2,14 @@ import { Application } from "pixi.js";
 import "@pixi/math-extras";
 
 import Game from "./app/Game";
+import GameEvents from "./enums/GameEvents";
 
 import "./css/main.css";
 
-const app: Application = new Application({
+const width = 800;
+const height = 800;
+
+export const app: Application = new Application({
     resizeTo: window,
     backgroundColor: 0x222222,
     antialias: true,
@@ -13,9 +17,21 @@ const app: Application = new Application({
     resolution: 2,
 });
 
-const game: Game = new Game();
+export const onResize = () => {
+    app.stage.emit(GameEvents.RESIZE, {
+        width,
+        height,
+        deviceRatio: Math.max(innerWidth / width, innerHeight / height),
+    });
+}
 
-app.stage.addChild(game);
-game.init();
+(async () => {
+    window.onresize = onResize;
 
-export default app;
+    const game: Game = new Game();
+
+    app.stage.addChild(game);
+    await game.init();
+
+    onResize();
+})()

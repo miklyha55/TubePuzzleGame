@@ -8,9 +8,12 @@ const {
 const BundleAnalyzerPlugin =
   require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 
+const entryPoint = path.resolve(__dirname, "./api/index.js");
 const DEVELOPMENT = process.env.NODE_ENV === "development";
 
 module.exports = {
+  entry: entryPoint,
+
   output: {
     publicPath: "/",
     path: path.resolve(__dirname, "../dist/"),

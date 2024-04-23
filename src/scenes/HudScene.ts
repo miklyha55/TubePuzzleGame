@@ -1,9 +1,15 @@
-import { Container } from "pixi.js";
+import BaseScene from "./core/BaseScene";
 
-export default class HudScene extends Container {
+import Menu from "../gameObjects/screens/Menu";
+import Game from "../gameObjects/screens/Game";
+import Result from "../gameObjects/screens/Result";
+
+export default class HudScene extends BaseScene {
     constructor() {
-        super();
+        super([
+            new Menu(),
+            new Game(),
+            new Result(),
+        ]);
     }
-
-    public create(): void {}
 }

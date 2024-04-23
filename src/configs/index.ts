@@ -1,13 +1,19 @@
-import { UriLinks } from "./type";
+import { IUriLinks } from "./type";
 
-export const textureAssets: UriLinks = {};
+import bg from "../assets/images/bg.png";
+import bg2 from "../assets/images/bg2.png";
 
-export const fontAssets: UriLinks = {};
+export const textureAssets: IUriLinks = {
+    bg,
+    bg2,
+};
 
-export const soundAssets: UriLinks = {};
+export const fontAssets: IUriLinks = {};
+
+export const soundAssets: IUriLinks = {};
 
 import game from "../assets/jsons/game.json";
 
-export const jsonsAssets: UriLinks = {
+export const jsonsAssets: IUriLinks = {
     game,
 };

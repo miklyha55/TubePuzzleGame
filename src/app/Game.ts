@@ -17,10 +17,10 @@ export default class Game extends Container {
         this.hudScene = new HudScene();
     }
 
-    async init(): Promise<void> {
+    public async init(): Promise<void> {
         this.addChild(this.loadScene);
 
-        await this.loadScene.create();
+        await this.loadScene.init();
 
         this.removeChild(this.loadScene);
         this.loadScene.destroy();
@@ -28,7 +28,7 @@ export default class Game extends Container {
         this.addChild(this.gameScene);
         this.addChild(this.hudScene);
 
-        this.gameScene.create();
-        this.hudScene.create();
+        this.gameScene.init();
+        this.hudScene.init();
     }
 }
