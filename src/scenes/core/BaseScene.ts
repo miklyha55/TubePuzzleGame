@@ -5,7 +5,6 @@ import GameEvents from "../../enums/GameEvents";
 
 import GameObject from "../../core/gameObject/GameObject";
 
-
 type Levels = (GameObject | null)[];
 
 export default class BaseScene extends GameObject {

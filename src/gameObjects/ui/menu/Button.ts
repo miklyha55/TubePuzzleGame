@@ -1,11 +1,11 @@
 import { Graphics, Text } from "pixi.js";
 
-import { app } from "../..";
+import { app } from "../../..";
 
-import GameObject from "../../core/gameObject/GameObject";
+import GameObject from "../../../core/gameObject/GameObject";
 
-import { LevelIndexes } from "../../scenes/constants";
-import GameEvents from "../../enums/GameEvents";
+import { LevelIndexes } from "../../../scenes/constants";
+import GameEvents from "../../../enums/GameEvents";
 
 export default class Button extends GameObject {
     constructor() {

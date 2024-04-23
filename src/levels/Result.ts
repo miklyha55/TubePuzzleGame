@@ -1,7 +1,7 @@
 
 import GameObject from "../core/gameObject/GameObject";
 
-import Bg from "../gameObjects/ui/Bg";
+import Bg from "../gameObjects/ui/menu/Bg";
 
 export default class Result extends GameObject {
     constructor() {

@@ -1,7 +1,7 @@
 import GameObject from "../../core/gameObject/GameObject";
 
-import Title from "../ui/Title";
-import Button from "../ui/Button";
+import Title from "../ui/menu/Title";
+import Button from "../ui/menu/Button";
 
 export default class Menu extends GameObject {
     constructor() {

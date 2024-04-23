@@ -1,5 +1,8 @@
 import GameObject from "../../core/gameObject/GameObject";
 
+import Title from "../ui/result/Title";
+import Button from "../ui/result/Button";
+
 export default class Result extends GameObject {
     constructor() {
         super({
@@ -26,5 +29,14 @@ export default class Result extends GameObject {
         });
     }
 
-    override onInit(): void {}
+    override onInit(): void {
+        const title: Title = new Title();
+        const button: Button = new Button();
+
+        this.addChild(title);
+        title.init();
+        
+        this.addChild(button);
+        button.init();
+    }
 }

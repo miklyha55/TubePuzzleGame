@@ -1,6 +1,6 @@
 import { Text } from "pixi.js";
 
-import GameObject from "../../core/gameObject/GameObject";
+import GameObject from "../../../core/gameObject/GameObject";
 
 export default class Title extends GameObject {
     constructor() {
@@ -29,7 +29,7 @@ export default class Title extends GameObject {
     }
 
     override onInit(): void {
-        const text: Text = new Text("КРУТАЯ ИГРА С ТРУБАМИ");
+        const text: Text = new Text("Игра окончена!");
 
         text.anchor.set(0.5, 0.5);
         this.addChild(text);

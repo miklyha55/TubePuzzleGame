@@ -1,14 +1,14 @@
 import BaseScene from "./core/BaseScene";
 
 import Menu from "../gameObjects/screens/Menu";
-import Game from "../gameObjects/screens/Game";
+import Level from "../gameObjects/screens/Level";
 import Result from "../gameObjects/screens/Result";
 
 export default class HudScene extends BaseScene {
     constructor() {
         super([
             new Menu(),
-            new Game(),
+            new Level(),
             new Result(),
         ]);
     }
