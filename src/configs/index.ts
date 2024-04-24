@@ -1,23 +1,20 @@
 import { IUriLinks } from "./types";
 
-import bg from "../assets/images/bg.png";
-import bg2 from "../assets/images/bg2.png";
+import bgMenu from "../assets/images/bgMenu.png";
+import bgLevel from "../assets/images/bgLevel.png";
 
-import pipe1 from "../assets/images/pipes/pipeGrey_01.png";
-import pipe1Active from "../assets/images/pipes/pipeGrey_07.png";
+import pipe1 from "../assets/images/pipes/pipe1.png";
+import pipe1Active from "../assets/images/pipes/pipe1_a.png";
 
-import pipe2 from "../assets/images/pipes/pipeGrey_03.png";
-import pipe2Active from "../assets/images/pipes/pipeGrey_09.png";
+import pipe2 from "../assets/images/pipes/pipe2.png";
+import pipe2Active from "../assets/images/pipes/pipe2_a.png";
 
-import pipe3 from "../assets/images/pipes/pipeGrey_05.png";
-import pipe3Active from "../assets/images/pipes/pipeGrey_11.png";
-
-import pipe4 from "../assets/images/pipes/pipeGrey_06.png";
-import pipe4Active from "../assets/images/pipes/pipeGrey_12.png";
+import pipe3 from "../assets/images/pipes/pipe_3.png";
+import pipe3Active from "../assets/images/pipes/pipe_3_a.png";
 
 export const textureAssets: IUriLinks = {
-    bg,
-    bg2,
+    bgMenu,
+    bgLevel,
     pipes: {
         pipe1: {
             base: pipe1,
@@ -31,10 +28,6 @@ export const textureAssets: IUriLinks = {
             base: pipe3,
             active: pipe3Active,
         },
-        pipe4: {
-            base: pipe4,
-            active: pipe4Active,
-        }
     }
 };
 

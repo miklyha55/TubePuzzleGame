@@ -1,31 +1,41 @@
 {
     "levels": [
         {
-            "width": 200,
-            "height": 200,
-            "pipes": [
-                {
-                    "type": "pipe1",
+            "pipes": {
+                "pipe1": {
+                    "direction": [1, 0, 0, 1]
+                },
+                "pipe2": {
                     "direction": [0, 1, 0, 1]
                 },
-                {
-                    "type": "pipe2",
-                    "direction": [0, 0, 1, 1]
-                },
-                {
-                    "type": "pipe3",
-                    "direction": [1, 1, 0, 1]
-                },
-                {
-                    "type": "pipe4",
-                    "direction": [1, 1, 1, 1]
+                "pipe3": {
+                    "direction": [0, 1, 0, 1]
                 }
-            ],
+            },
             "map": [
-                [["pipe1", 180], ["pipe2", 0], ["pipe3", 270], ["pipe4", 360]],
-                [["pipe1", 180], ["pipe2", 90], ["pipe3", 270], ["pipe4", 360]],
-                [["pipe1", 180], ["pipe2", 0], ["pipe3", 270], ["pipe4", 360]],
-                [["pipe1", 180], ["pipe2", 90], ["pipe3", 270], ["pipe4", 360]]
+                [["pipe3", 90, true], ["pipe2", 0], ["pipe2", 90], ["pipe1", 360]],
+                [["pipe1", 180], ["pipe2", 0], ["pipe2", 90], ["pipe1", 0]],
+                [["pipe1", 90], ["pipe2", 0], ["pipe2", 270], ["pipe1", 360]],
+                [["pipe3", 90, false], ["pipe2", 0], ["pipe2", 270], ["pipe1", 180]]
+            ]
+        },
+        {
+            "pipes": {
+                "pipe1": {
+                    "direction": [1, 0, 0, 1]
+                },
+                "pipe2": {
+                    "direction": [0, 1, 0, 1]
+                },
+                "pipe3": {
+                    "direction": [0, 1, 0, 1]
+                }
+            },
+            "map": [
+                [["pipe1", 360], ["pipe2", 0], ["pipe2", 90], ["pipe3", 90, true]],
+                [["pipe1", 180], ["pipe2", 0], ["pipe2", 90], ["pipe1", 0]],
+                [["pipe1", 90], ["pipe2", 0], ["pipe2", 270], ["pipe1", 360]],
+                [["pipe1", 180], ["pipe2", 0], ["pipe2", 270], ["pipe3", 90, false]]
             ]
         }
     ]

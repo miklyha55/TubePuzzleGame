@@ -43,8 +43,8 @@ module.exports = {
     ]
     : [
       new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, "./layouts/index.html"),
-        filename: "UN, AL" + "/index.html",
+        template: path.resolve(__dirname, "./layouts/index.pug"),
+        filename: "ANY" + "/index.html",
         inject: false,
       }),
       new CleanWebpackPlugin(),

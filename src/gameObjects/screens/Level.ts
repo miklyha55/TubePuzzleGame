@@ -25,6 +25,4 @@ export default class Level extends GameObject {
             }
         });
     }
-
-    override onInit(): void {}
 }

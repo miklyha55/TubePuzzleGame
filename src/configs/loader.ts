@@ -9,7 +9,7 @@ export const fonts: IUriLinks = {};
 export const textures: IUriLinks = {};
 export const jsons: IUriLinks = {};
 
-export function load() {
+export function load(): Promise<void> {
     return new Promise<void>(async (resolve) => {
         for (const key in fontAssets) {
             if (Object.hasOwnProperty.call(fontAssets, key)) {

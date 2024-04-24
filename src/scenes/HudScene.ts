@@ -9,6 +9,7 @@ export default class HudScene extends BaseScene {
         super([
             new Menu(),
             new Level(),
+            new Level(),
             new Result(),
         ]);
     }

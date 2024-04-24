@@ -5,10 +5,8 @@ export interface IROGameProps {
 }
 
 export interface IROLevelsProps {
-    readonly width: number;
-    readonly height: number;
-    readonly pipes: IROPipeProps[],
+    readonly pipes: { [key: string]: IROPipeProps };
     readonly map: Array<IROMapItemProps[]>,
 }
 
-export type IROMapItemProps = ['string', number];
+export type IROMapItemProps = ['string', number, boolean] | null; 

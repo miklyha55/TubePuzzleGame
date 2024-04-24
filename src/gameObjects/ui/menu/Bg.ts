@@ -31,7 +31,7 @@ export default class Bg extends GameObject {
     }
 
     override onInit(): void {
-        const sprite: Sprite = new Sprite(textures.bg2);
+        const sprite: Sprite = new Sprite(textures.bgMenu);
 
         sprite.anchor.set(0.5, 0.5);
         this.addChild(sprite);

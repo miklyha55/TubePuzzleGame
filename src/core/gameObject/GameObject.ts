@@ -15,39 +15,34 @@ export default class GameObject extends Container {
         this.props = props;
     }
 
-    public init() {
+    public init(): void {
         this.onInit();
 
         app.stage.on(GameEvents.RESIZE, this.onResize, this);
+        this.once("removed", this.onRemove, this);
     }
 
     protected onInit(): void {}
-
-    public remove() {
-        this.destroy();
-        this.onRemove();
-
-        app.stage.off(GameEvents.RESIZE, this.onResize, this);
-    }
-
     protected onRemove(): void {}
 
-    protected onResize(props: IROResizeProps) {
+    protected onResize(props: IROResizeProps): void {
         if (!this.props) {
             return;
         }
 
+        const { deviceRatio, } = props;
+        const { landscape, portrait } = this.props;
         const { innerWidth, innerHeight } = window;
         const isLandscape: boolean = innerWidth / innerHeight > 1;
 
         const resizeProps: IROOrientationProps = isLandscape
-            ? this.props.landscape
-            : this.props.portrait;
+            ? landscape
+            : portrait;
 
 
         if (resizeProps.scale) {
-            this.scale.x = resizeProps.scale.x * props.deviceRatio;
-            this.scale.y = resizeProps.scale.y * props.deviceRatio;
+            this.scale.x = resizeProps.scale.x * deviceRatio;
+            this.scale.y = resizeProps.scale.y * deviceRatio;
         }
 
         if (resizeProps.relativePosition) {

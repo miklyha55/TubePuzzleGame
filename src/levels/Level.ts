@@ -1,4 +1,5 @@
 import { jsons } from "../configs/loader";
+
 import GameObject from "../core/gameObject/GameObject";
 
 import Bg from "../gameObjects/game/Bg";

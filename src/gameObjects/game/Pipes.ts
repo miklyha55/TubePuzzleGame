@@ -1,22 +1,27 @@
+import { app } from "../..";
+
 import GameObject from "../../core/gameObject/GameObject";
+
+import GameEvents from "../../enums/GameEvents";
 
 import { Utils } from "../../configs/utils";
 
-import Pipe from "./Pipe/Pipe";
+import Pipe from "./Pipe";
 
 import { IROLevelsProps, IROMapItemProps } from "../../scenes/types";
 import { IVec2 } from "../../core/gameObject/types";
-import { IROPipeProps } from "./Pipe/types";
 
 export default class Pipes extends GameObject {
     private readonly levelProps: IROLevelsProps;
+    private readonly mapPipes: Array<Pipe | null>[];
+    private readonly allPipes: Array<Pipe>;
 
     constructor(levelProps: IROLevelsProps) {
         super({
             landscape: {
                 scale: {
-                    x: 0.6,
-                    y: 0.6,
+                    x: 0.4,
+                    y: 0.4,
                 },
                 relativePosition: {
                     x: 0.5,
@@ -25,8 +30,8 @@ export default class Pipes extends GameObject {
             },
             portrait: {
                 scale: {
-                    x: 0.6,
-                    y: 0.6,
+                    x: 0.4,
+                    y: 0.4,
                 },
                 relativePosition: {
                     x: 0.5,
@@ -36,29 +41,124 @@ export default class Pipes extends GameObject {
         });
 
         this.levelProps = levelProps;
+        this.mapPipes = [];
+        this.allPipes = [];
     }
 
     override onInit(): void {
-        const offset: IVec2 = Utils.v2(
-            (this.levelProps.map[0].length * this.levelProps.width) / 2,
-            (this.levelProps.map.length * this.levelProps.height) / 2
-        );
+        this.levelProps.map.forEach((row: Array<IROMapItemProps | null>, rowIndex: number) => {
+            const columnArray: Array<Pipe | null> = [];
 
-        this.levelProps.map.forEach((row: IROMapItemProps[], rowIndex: number) => {
-            row.forEach((column: IROMapItemProps, colndex: number) => {
-                const pipe: Pipe = new Pipe({
-                    type: column[0],
-                    direction: (this.levelProps.pipes.find((pipe: IROPipeProps) => pipe.type === column[0]))?.direction || [0, 0, 0, 0]
-                });
+            row.forEach((column: IROMapItemProps | null, colIndex: number) => {
+                let pipe: Pipe | null = null;
 
-                this.addChild(pipe);
-                pipe.init();
+                if (column) {
+                    const type: string = column[0];
+                    const angle: number = column[1];
+                    const isLock: boolean | void = column[2];
+                    const rotateLength: number = angle / 90;
 
-                pipe.angle = column[1];
+                    let direction: number[] = this.levelProps.pipes[type].direction;
 
-                pipe.x = colndex * this.levelProps.width - offset.x + this.levelProps.width / 2;
-                pipe.y = rowIndex * this.levelProps.height - offset.y + this.levelProps.height / 2;
+                    for (let index = 0; index < rotateLength; index++) {
+                        direction = Utils.arrayRotate(direction, false);
+                    }
+
+                    pipe = new Pipe({
+                        type,
+                        direction,
+                        angle,
+                        isLock,
+                    });
+
+                    this.addChild(pipe);
+                    pipe.init();
+
+                    const offset: IVec2 = Utils.v2(
+                        (this.levelProps.map[0].length * pipe.width) / 2,
+                        (this.levelProps.map.length * pipe.height) / 2
+                    );
+
+                    pipe.x = colIndex * pipe.width - offset.x + pipe.width / 2;
+                    pipe.y = rowIndex * pipe.height - offset.y + pipe.height / 2;
+
+                    this.allPipes.push(pipe)
+                }
+
+                columnArray.push(pipe);
             });
+
+            this.mapPipes.push(columnArray);
+        });
+
+        app.stage.on(GameEvents.CHECK_COMPARE, this.onCheckCompare, this);
+    }
+
+    override onRemove(): void {
+        app.stage.off(GameEvents.CHECK_COMPARE, this.onCheckCompare, this);
+
+        this.allPipes.forEach((pipe: Pipe) => {
+            pipe.destroy();
+        });
+    }
+
+    private async onCheckCompare(): Promise<void> {
+        let pipeCompareCounter: number = 0;
+
+        this.mapPipes.forEach((row: Array<Pipe | null>, rowIndex: number) => {
+            row.forEach((column: Pipe | null, colIndex: number) => {
+                if (!column) {
+                    return;
+                }
+
+                let compareCounter: number = 0;
+
+                const upPipe: Pipe | null | void = this.mapPipes[rowIndex - 1] && this.mapPipes[rowIndex - 1][colIndex];
+                const downPipe: Pipe | null | void = this.mapPipes[rowIndex + 1] && this.mapPipes[rowIndex + 1][colIndex];
+                const leftPipe: Pipe | null | void = this.mapPipes[rowIndex][colIndex - 1];
+                const rightPipe: Pipe | null | void = this.mapPipes[rowIndex][colIndex + 1];
+
+                if (upPipe != null && column.direction[1] && upPipe.direction[3]) {
+                    compareCounter++;
+                }
+
+                if (downPipe != null && column.direction[3] && downPipe.direction[1]) {
+                    compareCounter++;
+                }
+
+                if (leftPipe != null && column.direction[2] && leftPipe.direction[0]) {
+                    compareCounter++;
+                }
+
+                if (rightPipe != null && column.direction[0] && rightPipe.direction[2]) {
+                    compareCounter++;
+                }
+
+                pipeCompareCounter +=
+                    !column.isLock && compareCounter === column.direction.filter((number: number) => number).length ? 1 : 0;
+            });
+        });
+
+        const activePipes: Pipe[] = this.allPipes.filter((pipe: Pipe) => !pipe.isLock);
+        const isComplete: boolean = pipeCompareCounter === activePipes.length - 1;
+
+        activePipes.forEach((pipe: Pipe) => {
+            pipe.toggleWater(isComplete);
+        });
+
+        if (isComplete) {
+            this.toggleInterractivePipes(false);
+
+            await Utils.delay(1000);
+
+            app.stage.emit(GameEvents.NEXT_LEVEL);
+            this.toggleInterractivePipes(true);
+        }
+    }
+
+    private toggleInterractivePipes(isActive: boolean): void {
+        this.allPipes.forEach((pipe: Pipe) => {
+            pipe.interactive = isActive;
         });
     }
 }

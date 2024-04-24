@@ -4,7 +4,6 @@ import { app } from "../../..";
 
 import GameObject from "../../../core/gameObject/GameObject";
 
-import { LevelIndexes } from "../../../scenes/constants";
 import GameEvents from "../../../enums/GameEvents";
 
 export default class Button extends GameObject {
@@ -16,8 +15,8 @@ export default class Button extends GameObject {
                     y: 70,
                 },
                 scale: {
-                    x: 0.8,
-                    y: 0.8,
+                    x: 0.6,
+                    y: 0.6,
                 }
             },
             portrait: {
@@ -57,6 +56,6 @@ export default class Button extends GameObject {
     }
 
     private onPointerDown(): void {
-        app.stage.emit(GameEvents.SET_LEVEL, LevelIndexes.Level1);
+        app.stage.emit(GameEvents.NEXT_LEVEL);
     }
 }

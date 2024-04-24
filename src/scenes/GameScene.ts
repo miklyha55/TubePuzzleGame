@@ -1,4 +1,4 @@
-import BaseScene from "./core/BaseScene";
+import BaseScene from "./core/BaseScene";;
 
 import Menu from "../levels/Menu";
 import Level from "../levels/Level";
@@ -9,6 +9,7 @@ export default class GameScene extends BaseScene {
         super([
             new Menu(),
             new Level(0),
+            new Level(1),
             new Result(),
         ]);
     }

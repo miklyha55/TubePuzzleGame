@@ -1,8 +1,10 @@
 import { Container } from "pixi.js";
+import * as TWEEDLE from "tweedle.js";
 
 import GameScene from "../scenes/GameScene";
 import HudScene from "../scenes/HudScene";
 import LoadingScene from "../scenes/LoadingScene";
+import { app } from "..";
 
 export default class Game extends Container {
     loadScene: LoadingScene;
@@ -15,6 +17,10 @@ export default class Game extends Container {
         this.loadScene = new LoadingScene();
         this.gameScene = new GameScene();
         this.hudScene = new HudScene();
+
+        app.ticker.add(() => {
+            TWEEDLE.Group.shared.update(app.ticker.deltaMS);
+        });
     }
 
     public async init(): Promise<void> {

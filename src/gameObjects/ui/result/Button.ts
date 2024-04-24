@@ -2,10 +2,11 @@ import { Graphics, Text } from "pixi.js";
 
 import { app } from "../../..";
 
+import GameEvents from "../../../enums/GameEvents";
+
 import GameObject from "../../../core/gameObject/GameObject";
 
 import { LevelIndexes } from "../../../scenes/constants";
-import GameEvents from "../../../enums/GameEvents";
 
 export default class Button extends GameObject {
     constructor() {
@@ -16,8 +17,8 @@ export default class Button extends GameObject {
                     y: 70,
                 },
                 scale: {
-                    x: 0.8,
-                    y: 0.8,
+                    x: 0.6,
+                    y: 0.6,
                 }
             },
             portrait: {

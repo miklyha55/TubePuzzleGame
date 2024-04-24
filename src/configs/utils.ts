@@ -8,4 +8,13 @@ export const Utils = {
   delay: (ms: number = 0): Promise<void> => {
     return new Promise((resolve) => setTimeout(resolve, ms));
   },
+
+  arrayRotate: ([...array]: number[], isReverse: boolean): number[] => {
+    if (isReverse) {
+      array.unshift(array.pop() || 0);
+    } else {
+      array.push(array.shift() || 0);
+    }
+    return array;
+  }
 };
