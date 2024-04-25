@@ -4,7 +4,7 @@ import { app } from "../..";
 
 import GameEvents from "../../enums/GameEvents";
 
-import { IROGameObjectProps, IROOrientationProps, IROResizeProps } from "./types";
+import { type IROGameObjectProps, type IROOrientationProps, type IROResizeProps } from "./types";
 
 export default class GameObject extends Container {
     props: IROGameObjectProps | void;

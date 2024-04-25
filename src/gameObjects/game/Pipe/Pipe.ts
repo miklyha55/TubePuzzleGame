@@ -3,13 +3,14 @@ import { Tween } from "tweedle.js";
 
 import { app } from "../../..";
 
+import GameEvents from "../../../enums/GameEvents";
+
 import { textures } from "../../../configs/loader";
 import { Utils } from "../../../configs/utils";
 
 import GameObject from "../../../core/gameObject/GameObject";
 
-import { IROPipeProps } from "./types";
-import GameEvents from "../../../enums/GameEvents";
+import { type IROPipeProps } from "./types";
 
 export default class Pipe extends GameObject {
     direction: number[];
@@ -62,6 +63,6 @@ export default class Pipe extends GameObject {
         new Tween(this).to({ angle: this.angle - 90 }, 50).start();
         this.direction = Utils.arrayRotate(this.direction, true);
 
-        app.stage.emit(GameEvents.CHECK_COMPARE);
+        app.stage.emit(GameEvents.CHECK_PIPES_COMPARE);
     }
 }

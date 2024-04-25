@@ -1,4 +1,4 @@
-import { ObservablePoint } from "pixi.js"
+import { type ObservablePoint } from "pixi.js"
 
 export interface IROOrientationProps {
     readonly scale?: {

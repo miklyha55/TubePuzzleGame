@@ -1,4 +1,4 @@
-import BaseScene from "./core/BaseScene";;
+import BaseScene from "./core/BaseScene";
 
 import Menu from "../levels/Menu";
 import Level from "../levels/Level";

@@ -1,4 +1,4 @@
-import { IVec2 } from "../core/gameObject/types";
+import { type IVec2 } from "../core/gameObject/types";
 
 export const Utils = {
   v2: (x: number, y: number): IVec2 => {

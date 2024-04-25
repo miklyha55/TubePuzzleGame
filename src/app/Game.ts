@@ -1,10 +1,11 @@
 import { Container } from "pixi.js";
 import * as TWEEDLE from "tweedle.js";
 
+import { app } from "..";
+
+import LoadingScene from "../scenes/LoadingScene";
 import GameScene from "../scenes/GameScene";
 import HudScene from "../scenes/HudScene";
-import LoadingScene from "../scenes/LoadingScene";
-import { app } from "..";
 
 export default class Game extends Container {
     loadScene: LoadingScene;

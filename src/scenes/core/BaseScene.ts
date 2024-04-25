@@ -1,10 +1,12 @@
+import { Container, DisplayObject } from "pixi.js";
+
 import { app, onResize } from "../..";
 
-import { LevelIndexes } from "../constants";
 import GameEvents from "../../enums/GameEvents";
 
+import { LevelIndexes } from "../constants";
+
 import GameObject from "../../core/gameObject/GameObject";
-import { Container, DisplayObject } from "pixi.js";
 
 type Levels = (GameObject | null)[];
 

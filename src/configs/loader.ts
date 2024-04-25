@@ -3,7 +3,7 @@ import { sound } from "@pixi/sound";
 
 import { fontAssets, soundAssets, textureAssets, jsonsAssets } from "./index";
 
-import { IUriLinks } from "./types";
+import { type IUriLinks } from "./types";
 
 export const fonts: IUriLinks = {};
 export const textures: IUriLinks = {};

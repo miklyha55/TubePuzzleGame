@@ -1,8 +1,9 @@
 import { Application } from "pixi.js";
 import "@pixi/math-extras";
 
-import Game from "./app/Game";
 import GameEvents from "./enums/GameEvents";
+
+import Game from "./app/Game";
 
 import "./css/main.css";
 

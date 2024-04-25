@@ -8,8 +8,8 @@ import { Utils } from "../../configs/utils";
 
 import Pipe from "./Pipe";
 
-import { IROLevelsProps, IROMapItemProps } from "../../scenes/types";
-import { IVec2 } from "../../core/gameObject/types";
+import { type IROLevelsProps, type IROMapItemProps } from "../../scenes/types";
+import { type IVec2 } from "../../core/gameObject/types";
 
 export default class Pipes extends GameObject {
     private readonly levelProps: IROLevelsProps;
@@ -91,18 +91,18 @@ export default class Pipes extends GameObject {
             this.mapPipes.push(columnArray);
         });
 
-        app.stage.on(GameEvents.CHECK_COMPARE, this.onCheckCompare, this);
+        app.stage.on(GameEvents.CHECK_PIPES_COMPARE, this.onCheckPipesCompare, this);
     }
 
     override onRemove(): void {
-        app.stage.off(GameEvents.CHECK_COMPARE, this.onCheckCompare, this);
+        app.stage.off(GameEvents.CHECK_PIPES_COMPARE, this.onCheckPipesCompare, this);
 
         this.allPipes.forEach((pipe: Pipe) => {
             pipe.destroy();
         });
     }
 
-    private async onCheckCompare(): Promise<void> {
+    private async onCheckPipesCompare(): Promise<void> {
         let pipeCompareCounter: number = 0;
 
         this.mapPipes.forEach((row: Array<Pipe | null>, rowIndex: number) => {

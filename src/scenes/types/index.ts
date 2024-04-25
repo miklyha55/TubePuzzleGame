@@ -1,4 +1,4 @@
-import { IROPipeProps } from "../../gameObjects/game/Pipe/types";
+import { type IROPipeProps } from "../../gameObjects/game/Pipe/types";
 
 export interface IROGameProps {
     readonly levels: IROLevelsProps[],
