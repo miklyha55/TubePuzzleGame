@@ -10,24 +10,24 @@ export default class Button extends GameObject {
     constructor() {
         super({
             landscape: {
-                absolutePosition: {
-                    x: 0,
-                    y: 70,
-                },
                 scale: {
                     x: 0.6,
                     y: 0.6,
-                }
+                },
+                relativePosition: {
+                    x: 0,
+                    y: 0.2,
+                },
             },
             portrait: {
-                absolutePosition: {
-                    x: 0,
-                    y: 200,
-                },
                 scale: {
                     x: 0.8,
                     y: 0.8,
-                }
+                },
+                relativePosition: {
+                    x: 0,
+                    y: 0.2,
+                },
             }
         });
     }
@@ -41,7 +41,7 @@ export default class Button extends GameObject {
 
         this.addChild(graphics);
 
-        const text: Text = new Text("Начать игру");
+        const text: Text = new Text("Play", { fontSize: 50 });
 
         text.anchor.set(0.5, 0.5);
         this.addChild(text);

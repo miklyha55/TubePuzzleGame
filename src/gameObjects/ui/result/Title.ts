@@ -6,30 +6,22 @@ export default class Title extends GameObject {
     constructor() {
         super({
             landscape: {
-                absolutePosition: {
+                relativePosition: {
                     x: 0,
-                    y: -100,
+                    y: -0.2,
                 },
-                scale: {
-                    x: 0.8,
-                    y: 0.8,
-                }
             },
             portrait: {
-                absolutePosition: {
+                relativePosition: {
                     x: 0,
-                    y: -200,
+                    y: -0.2,
                 },
-                scale: {
-                    x: 0.8,
-                    y: 0.8,
-                }
             }
         });
     }
 
     override onInit(): void {
-        const text: Text = new Text("Игра окончена!");
+        const text: Text = new Text("Game \ncomplete!", { fill: 0x0000ff, fontSize: 55, align: "center" });
 
         text.anchor.set(0.5, 0.5);
         this.addChild(text);
