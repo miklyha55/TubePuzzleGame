@@ -21,7 +21,7 @@ export default class Title extends GameObject {
     }
 
     override onInit(): void {
-        const text: Text = new Text("Game \ncomplete!", { fill: 0x0000ff, fontSize: 55, align: "center" });
+        const text: Text = new Text("Game \nover!", { fill: 0x0000ff, fontSize: 55, align: "center" });
 
         text.anchor.set(0.5, 0.5);
         this.addChild(text);

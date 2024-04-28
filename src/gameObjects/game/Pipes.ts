@@ -20,8 +20,8 @@ export default class Pipes extends GameObject {
         super({
             landscape: {
                 scale: {
-                    x: 0.4,
-                    y: 0.4,
+                    x: 0.36,
+                    y: 0.36,
                 },
                 relativePosition: {
                     x: 0.5,
@@ -30,8 +30,8 @@ export default class Pipes extends GameObject {
             },
             portrait: {
                 scale: {
-                    x: 0.4,
-                    y: 0.4,
+                    x: 0.36,
+                    y: 0.36,
                 },
                 relativePosition: {
                     x: 0.5,
